@@ -157,8 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       _progress = 0;
                       _timer?.cancel();
-                      _timer = Timer.periodic(const Duration(milliseconds: 100),
-                          (Timer timer) {
+                      _timer = Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
                         EasyLoading.showProgress(_progress,
                             status: '${(_progress * 100).toStringAsFixed(0)}%');
                         _progress += 0.03;
@@ -249,8 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('Toast Positon'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child:
-                          CupertinoSegmentedControl<EasyLoadingToastPosition>(
+                      child: CupertinoSegmentedControl<EasyLoadingToastPosition>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingToastPosition.top: Padding(
@@ -281,8 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('Animation Style'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child:
-                          CupertinoSegmentedControl<EasyLoadingAnimationStyle>(
+                      child: CupertinoSegmentedControl<EasyLoadingAnimationStyle>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingAnimationStyle.opacity: Padding(
@@ -320,8 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('IndicatorType(total: 23)'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child:
-                          CupertinoSegmentedControl<EasyLoadingIndicatorType>(
+                      child: CupertinoSegmentedControl<EasyLoadingIndicatorType>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingIndicatorType.circle: Padding(
