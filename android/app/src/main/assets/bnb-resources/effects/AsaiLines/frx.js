@@ -52,7 +52,7 @@ function onVideoRecordDiscard() {
 switch(Api.getFRXVersion())
 {
 case 31:
-    Api.print("Detected FRX version: 31");
+    Api.log("Detected FRX version: 31");
 
     isMouthOpen = function (landmarks,latents) {
         if(latents.length > 1) {
@@ -75,7 +75,7 @@ case 31:
 
     break;
 case 3:
-    Api.print("Detected FRX version: 3");
+    Api.log("Detected FRX version: 3");
 
     isMouthOpen = function (landmarks,latents) {
         if(latents.length > 1) {
@@ -132,7 +132,7 @@ case 2:
 
     break;
 default:
-    Api.print("Error: unknown FRX version");
+    Api.log("Error: unknown FRX version");
 }
 
 //
@@ -142,7 +142,7 @@ default:
 
 if(Api.getFRXVersion() >= 3)
 {
-    Api.print("Chosing isSmile function for isEyebrowUp trigger (FRX3 migration)");
+    Api.log("Chosing isSmile function for isEyebrowUp trigger (FRX3 migration)");
     isEyebrowUpSpecialFunction = function(landmarks,latents) {
         return isSmile(landmarks, latents);
     };
@@ -151,7 +151,7 @@ if(Api.getFRXVersion() >= 3)
 }
 else if(Api.getFRXVersion() == 2)
 {
-    Api.print("Chosing isEyebrowUp function for isEyebrowUp trigger (FRX2)");
+    Api.log("Chosing isEyebrowUp function for isEyebrowUp trigger (FRX2)");
     isEyebrowUpSpecialFunction = function(landmarks,latents) {
         return isEyebrowUp(landmarks, latents);
     };

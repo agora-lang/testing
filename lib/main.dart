@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
+      log('Failed to pick image: $e');
     }
   }
 
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
+      log('Failed to pick image: $e');
     }
   }
 
@@ -73,21 +74,25 @@ class _MyHomePageState extends State<MyHomePage> {
               MaterialButton(
                   color: Colors.blue,
                   child: const Text("Pick Image from Gallery",
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          color: Colors.white70, fontWeight: FontWeight.bold)),
                   onPressed: () {
                     pickImage();
                   }),
               MaterialButton(
                   color: Colors.blue,
                   child: const Text("Pick Image from Camera",
-                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          color: Colors.white70, fontWeight: FontWeight.bold)),
                   onPressed: () {
                     pickImageC();
                   }),
               const SizedBox(
                 height: 20,
               ),
-              image != null ? Image.file(image!) : const Text("No image selected")
+              image != null
+                  ? Image.file(image!)
+                  : const Text("No image selected")
             ],
           ),
         ));

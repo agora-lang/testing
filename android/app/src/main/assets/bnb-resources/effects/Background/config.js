@@ -18,7 +18,7 @@ function setBgTexture(fileName) {
     Api.meshfxMsg("shaderVec4", 0, 0, "1 0 0 0");
     Api.meshfxMsg("tex", 0, 0, fileName);
 
-    Api.print("setBgTexture - texture " + fileName + " has been set");
+    Api.log("setBgTexture - texture " + fileName + " has been set");
 
 }
 
@@ -28,31 +28,31 @@ function setBgVideo(fileName) {
     Api.setVideoFile("frx", fileName);
     Api.playVideoRange("frx", 0.01, 0.02, false, 1);
 
-    Api.print("setBgVideo - video file " + fileName + " has been set");
+    Api.log("setBgVideo - video file " + fileName + " has been set");
 }
 
 function playVideo() {
-    Api.print("playVideo - video is playing.");
+    Api.log("playVideo - video is playing.");
     Api.playVideo("frx", true, 1);
 }
 
 function stopVideo() {
-    Api.print("stopVideo - video has been stopped.");
+    Api.log("stopVideo - video has been stopped.");
     Api.stopVideo("frx");
 }
 
 function pauseVideo() {
-    Api.print("pauseVideo - video is on a pause.");
+    Api.log("pauseVideo - video is on a pause.");
     Api.pauseVideo("frx");
 }
 
 function rotateBg(angle) {
     var anglesAvailable = [0,90,180,270,-270,-90];
     if(!contains(anglesAvailable,parseInt(angle))) {
-        Api.print("rotateBgTex(angle) - unable to set any angle except the following [0,90,-90,270,-270,180]");
+        Api.log("rotateBgTex(angle) - unable to set any angle except the following [0,90,-90,270,-270,180]");
         return;
     }
-    Api.print("rotateBgTex - angle " + angle + "degrees is set");
+    Api.log("rotateBgTex - angle " + angle + "degrees is set");
     Api.meshfxMsg("shaderVec4", 0, 1, angle + " 0.0 0.0 0.");
 }
 

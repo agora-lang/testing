@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -28,20 +29,21 @@ class _TestPageState extends State<TestPage> {
   }
 
   void statusCallback(EasyLoadingStatus status) {
-    print('Test EasyLoading Status $status');
+    log('Test EasyLoading Status $status');
   }
 
   void loadData() async {
     try {
       await EasyLoading.show();
       HttpClient client = HttpClient();
-      HttpClientRequest request = await client.getUrl(Uri.parse('https://github.com'));
+      HttpClientRequest request =
+          await client.getUrl(Uri.parse('https://github.com'));
       HttpClientResponse response = await request.close();
-      print(response);
+      log(response.toString());
       await EasyLoading.dismiss();
     } catch (e) {
       await EasyLoading.showError(e.toString());
-      print(e);
+      log(e.toString());
     }
   }
 

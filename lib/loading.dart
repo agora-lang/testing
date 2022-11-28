@@ -1,4 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
+import 'dart:developer';
 
 // import 'package:easy_loader/easy_loader.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +30,8 @@ void configLoading() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,14 +40,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter EasyLoading'),
+      home: const MyHomePage(title: 'Flutter EasyLoading'),
       builder: EasyLoading.init(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -58,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     EasyLoading.addStatusCallback((status) {
-      print('EasyLoading Status $status');
+      log('EasyLoading Status $status');
       if (status == EasyLoadingStatus.dismiss) {
         _timer?.cancel();
       }
@@ -73,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title ?? ''),
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           child: Column(
@@ -92,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) => TestPage(),
+                          builder: (BuildContext context) => const TestPage(),
                         ),
                       );
                     },
@@ -102,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       _timer?.cancel();
                       await EasyLoading.dismiss();
-                      print('EasyLoading dismiss');
+                      log('EasyLoading dismiss');
                     },
                   ),
                   TextButton(
@@ -113,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         status: 'loading...',
                         maskType: EasyLoadingMaskType.black,
                       );
-                      print('EasyLoading show');
+                      log('EasyLoading show');
                     },
                   ),
                   TextButton(
@@ -130,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () async {
                       _timer?.cancel();
                       await EasyLoading.showSuccess('Great Success!');
-                      print('EasyLoading showSuccess');
+                      log('EasyLoading showSuccess');
                     },
                   ),
                   TextButton(
@@ -152,7 +157,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       _progress = 0;
                       _timer?.cancel();
-                      _timer = Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
+                      _timer = Timer.periodic(const Duration(milliseconds: 100),
+                          (Timer timer) {
                         EasyLoading.showProgress(_progress,
                             status: '${(_progress * 100).toStringAsFixed(0)}%');
                         _progress += 0.03;
@@ -243,7 +249,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('Toast Positon'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: CupertinoSegmentedControl<EasyLoadingToastPosition>(
+                      child:
+                          CupertinoSegmentedControl<EasyLoadingToastPosition>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingToastPosition.top: Padding(
@@ -274,7 +281,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('Animation Style'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: CupertinoSegmentedControl<EasyLoadingAnimationStyle>(
+                      child:
+                          CupertinoSegmentedControl<EasyLoadingAnimationStyle>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingAnimationStyle.opacity: Padding(
@@ -312,7 +320,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text('IndicatorType(total: 23)'),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: CupertinoSegmentedControl<EasyLoadingIndicatorType>(
+                      child:
+                          CupertinoSegmentedControl<EasyLoadingIndicatorType>(
                         selectedColor: Colors.blue,
                         children: const {
                           EasyLoadingIndicatorType.circle: Padding(
