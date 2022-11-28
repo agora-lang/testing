@@ -35,8 +35,7 @@ class _TestPageState extends State<TestPage> {
     try {
       await EasyLoading.show();
       HttpClient client = HttpClient();
-      HttpClientRequest request =
-          await client.getUrl(Uri.parse('https://github.com'));
+      HttpClientRequest request = await client.getUrl(Uri.parse('https://github.com'));
       HttpClientResponse response = await request.close();
       print(response);
       await EasyLoading.dismiss();

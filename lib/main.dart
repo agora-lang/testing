@@ -73,25 +73,21 @@ class _MyHomePageState extends State<MyHomePage> {
               MaterialButton(
                   color: Colors.blue,
                   child: const Text("Pick Image from Gallery",
-                      style: TextStyle(
-                          color: Colors.white70, fontWeight: FontWeight.bold)),
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
                   onPressed: () {
                     pickImage();
                   }),
               MaterialButton(
                   color: Colors.blue,
                   child: const Text("Pick Image from Camera",
-                      style: TextStyle(
-                          color: Colors.white70, fontWeight: FontWeight.bold)),
+                      style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
                   onPressed: () {
                     pickImageC();
                   }),
               const SizedBox(
                 height: 20,
               ),
-              image != null
-                  ? Image.file(image!)
-                  : const Text("No image selected")
+              image != null ? Image.file(image!) : const Text("No image selected")
             ],
           ),
         ));
